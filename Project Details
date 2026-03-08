@@ -1,0 +1,45 @@
+🚀 Overview
+    1.Maya is designed to be a dual-purpose bot:
+    2.Shopping Assistant: Scrapes Amazon.in to find products based on specific user queries (e.g., "sneakers under ₹3000").
+    3.Styling Consultant: Engages in a multi-turn conversation to understand context (occasion, weather, preference) before offering curated outfit suggestions.
+
+
+🛠️ Tech Stack
+    1.Automation Platform: n8n
+    2.AI Model: Google Gemini (via LangChain Integration)
+    3.Interface: Telegram Bot API
+    4.Data Retrieval: Scraper API (targeting Amazon India)
+
+
+📦 Features
+    1. Smart Product Search
+      -The AI Agent is trained to recognize intent. When a user asks for products, the agent:
+      -Extracts search terms and price constraints.
+      -Dynamically builds an Amazon India search URL.
+      -Uses Scraper API to bypass bot detection and fetch HTML.
+      -Parses and displays the top 5 results with names, prices, ratings, and links.
+    2. Conversational Styling Advice   
+      -If the user asks for fashion tips, Maya enters "Consultant Mode":
+      -Contextual Awareness: Asks about the occasion (wedding, office, etc.) and style preferences.
+      -Personalized Recommendations: Suggests complete looks including bottoms, footwear, and accessories.
+      -Interactive Upselling: Automatically offers to find the suggested items on Amazon after providing the advice.
+
+
+⚙️ Configuration & Setup Prerequisites
+    1.An n8n instance (self-hosted or cloud).
+    2.A Telegram Bot Token (obtained via @BotFather).
+    3.A Google Gemini API Key (from Google AI Studio).
+    4.A Scraper API Key.
+   -Node Highlights
+   -Telegram Trigger: Listens for incoming messages.
+   -AI Agent (LangChain): The "brain" of the workflow, using a custom System Message to define Maya's personality and logic.
+   -HTTP Request Tool: Connected as a tool to the AI Agent, configured to call api.scraperapi.com with the dynamic Amazon URL.
+   -Google Gemini Chat Model: Provides the reasoning and NLP capabilities.
+
+
+📝 Example Interactions
+  Product Query:
+   -User: "Show me running shoes under 2000"
+   -Maya: [Calls Scraper API] → Returns 5 shoes with price tags and Amazon links.
+
+
